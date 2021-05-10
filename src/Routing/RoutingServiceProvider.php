@@ -8,6 +8,8 @@ use Psr\Http\Message\ResponseFactoryInterface;
 use Slim\Interfaces\CallableResolverInterface;
 use Slim\Interfaces\RouteCollectorInterface;
 use Slim\Interfaces\RouteResolverInterface;
+use Slim\Routing\RouteCollector;
+use Slim\Routing\RouteResolver;
 use Illuminate\Support\ServiceProvider;
 
 class RoutingServiceProvider extends ServiceProvider
@@ -27,6 +29,16 @@ class RoutingServiceProvider extends ServiceProvider
         $this->app->instance(
             CallableResolverInterface::class,
             $callableResolver = new CallableResolver($this->app)
+        );
+
+        $this->app->instance(
+            RouteCollectorInterface::class,
+            $routeCollector = new RouteCollector($responseFactory, $callableResolver, $this->app)
+        );
+
+        $this->app->instance(
+            RouteResolverInterface::class,
+            $routeCollector = new RouteResolver($routeCollector)
         );
 
         // $this->app->singleton('router', function ($app) {
