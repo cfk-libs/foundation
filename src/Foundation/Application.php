@@ -8,6 +8,7 @@ use Sellony\Contracts\Foundation\Application as ApplicationContract;
 use Illuminate\Events\EventServiceProvider;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Log\LogServiceProvider;
+use Sellony\Routing\RoutingServiceProvider;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Env;
@@ -208,6 +209,7 @@ class Application extends Container implements ApplicationContract
     {
         $this->register(new EventServiceProvider($this));
         $this->register(new LogServiceProvider($this));
+        $this->register(new RoutingServiceProvider($this));
     }
 
     /**
