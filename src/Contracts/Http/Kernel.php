@@ -14,21 +14,15 @@ interface Kernel
     /**
      * Handle an incoming HTTP request.
      *
+     * @param  \Symfony\Component\HttpFoundation\Request  $request
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function handle();
-
-    /**
-     * Perform any final actions for the request lifecycle.
-     *
-     * @return void
-     */
-    public function terminate();
+    public function handle($request);
 
     /**
      * Get the Laravel application instance.
      *
-     * @return \Sellony\Contracts\Foundation\Application
+     * @return \Illuminate\Contracts\Foundation\Application
      */
     public function getApplication();
 }

@@ -2,8 +2,10 @@
 
 namespace Sellony\Foundation\Http;
 
+// use Illuminate\Contracts\Debug\ExceptionHandler;
 use Sellony\Contracts\Foundation\Application;
-use Illuminate\Contracts\Http\Kernel as KernelContract;
+use Sellony\Contracts\Http\Kernel as KernelContract;
+use Illuminate\Support\Facades\Facade;
 
 class Kernel implements KernelContract
 {
@@ -42,8 +44,12 @@ class Kernel implements KernelContract
     /**
      * Handle an incoming HTTP request.
      */
-    public function handle()
+    public function handle($request)
     {
+        $this->app->instance('request', $request);
+
+        Facade::clearResolvedInstance('request');
+
         $this->bootstrap();
     }
 
@@ -87,18 +93,5 @@ class Kernel implements KernelContract
     public function getApplication()
     {
         return $this->app;
-    }
-
-    /**
-     * Set the Laravel application instance.
-     *
-     * @param  \Sellony\Contracts\Foundation\Application
-     * @return $this
-     */
-    public function setApplication(Application $app)
-    {
-        $this->app = $app;
-
-        return $this;
     }
 }
