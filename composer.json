@@ -3,8 +3,7 @@
     "type": "library",
     "autoload": {
         "psr-4": {
-            "Sellony\\Foundation\\": "foundation",
-            "Sellony\\Contracts\\": "foundation"
+            "Sellony\\": "foundation"
         },
         "files": [
             "helpers.php"
