@@ -1,4 +1,12 @@
 {
     "name": "sellony/foundation",
-    "type": "library"
+    "type": "library",
+    "autoload": {
+        "psr-4": {
+            "Sellony\\Foundation\\": ""
+        },
+        "files": [
+            "helpers.php"
+        ]
+    }
 }
