@@ -1,6 +1,10 @@
 {
     "name": "sellony/foundation",
     "type": "library",
+    "require": {
+        "vlucas/phpdotenv": "^5.3",
+        "phpoption/phpoption": "^1.7"
+    },
     "autoload": {
         "psr-4": {
             "Sellony\\": ""
