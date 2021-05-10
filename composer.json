@@ -7,8 +7,8 @@
     },
     "autoload": {
         "psr-4": {
-            "Sellony\\Contracts": "src/Contracts",
-            "Sellony\\Foundation": "src/Foundation"
+            "Sellony\\Contracts\\": "src/Contracts",
+            "Sellony\\Foundation\\": "src/Foundation"
         },
         "files": [
             "src/helpers.php"
