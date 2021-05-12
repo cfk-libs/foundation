@@ -31,9 +31,6 @@ class EventGenerateCommand extends Command
     {
         $providers = $this->laravel->getProviders(EventServiceProvider::class);
 
-        dd($providers);
-        exit;
-
         foreach ($providers as $provider) {
             foreach ($provider->listens() as $event => $listeners) {
                 $this->makeEventAndListeners($event, $listeners);
