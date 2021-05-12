@@ -5,7 +5,7 @@ namespace Sellony\Foundation\Console;
 
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
-use Illuminate\Foundation\Events\VendorTagPublished;
+use Sellony\Foundation\Events\VendorTagPublished;
 use Illuminate\Support\Arr;
 use Illuminate\Support\ServiceProvider;
 use League\Flysystem\Adapter\Local as LocalAdapter;

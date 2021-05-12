@@ -4,7 +4,7 @@
 namespace Sellony\Foundation\Console;
 
 use Illuminate\Console\Command;
-use Illuminate\Foundation\PackageManifest;
+use Sellony\Foundation\PackageManifest;
 
 class PackageDiscoverCommand extends Command
 {
@@ -25,7 +25,7 @@ class PackageDiscoverCommand extends Command
     /**
      * Execute the console command.
      *
-     * @param  \Illuminate\Foundation\PackageManifest  $manifest
+     * @param  \Sellony\Foundation\PackageManifest  $manifest
      * @return void
      */
     public function handle(PackageManifest $manifest)

@@ -4,7 +4,7 @@
 namespace Sellony\Foundation\Console;
 
 use Illuminate\Console\Command;
-use Illuminate\Foundation\Support\Providers\EventServiceProvider;
+use Sellony\Foundation\Support\Providers\EventServiceProvider;
 use Illuminate\Support\Str;
 
 class EventGenerateCommand extends Command
