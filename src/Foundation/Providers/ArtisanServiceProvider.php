@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Sellony\Foundation\Providers;
 
 // use Illuminate\Auth\Console\ClearResetsCommand;

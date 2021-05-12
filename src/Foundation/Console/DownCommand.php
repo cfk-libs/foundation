@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Sellony\Foundation\Console;
 
 use Exception;

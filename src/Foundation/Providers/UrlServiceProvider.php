@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Sellony\Foundation\Providers;
 
 use Admin\App\Kernel\Library\UrlGenerator;
