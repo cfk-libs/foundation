@@ -64,7 +64,7 @@ class Kernel implements KernelContract
         \Sellony\Foundation\Bootstrap\LoadConfiguration::class,
         // \Sellony\Foundation\Bootstrap\HandleExceptions::class,
         \Sellony\Foundation\Bootstrap\RegisterFacades::class,
-        \Sellony\Foundation\Bootstrap\SetRequestForConsole::class,
+        // \Sellony\Foundation\Bootstrap\SetRequestForConsole::class,
         \Sellony\Foundation\Bootstrap\RegisterProviders::class,
         \Sellony\Foundation\Bootstrap\BootProviders::class,
     ];
