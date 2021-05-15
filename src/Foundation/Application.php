@@ -989,6 +989,26 @@ class Application extends Container implements ApplicationContract
     }
 
     /**
+     * Determine if the application route is cached.
+     *
+     * @return bool
+     */
+    public function routeIsCached()
+    {
+        return is_file($this->getCachedRoutePath());
+    }
+
+    /**
+     * Get the path to the route cache file.
+     *
+     * @return string
+     */
+    public function getCachedRoutePath()
+    {
+        return $this->normalizeCachePath('APP_ROUTE_CACHE', 'cache/routes.php');
+    }
+
+    /**
      * Determine if the application events are cached.
      *
      * @return bool
