@@ -113,6 +113,19 @@ if (!function_exists('resource_path')) {
     }
 }
 
+if (! function_exists('database_path')) {
+    /**
+     * Get the database path.
+     *
+     * @param  string  $path
+     * @return string
+     */
+    function database_path($path = '')
+    {
+        return app()->databasePath($path);
+    }
+}
+
 if (! function_exists('config')) {
     /**
      * Get / set the specified configuration value.
