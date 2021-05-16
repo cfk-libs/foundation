@@ -1,6 +1,6 @@
 <?php
 
-namespace Illuminate\Foundation\Bus;
+namespace Sellony\Foundation\Bus;
 
 use Illuminate\Contracts\Bus\Dispatcher;
 use Illuminate\Support\Fluent;
@@ -10,7 +10,7 @@ trait Dispatchable
     /**
      * Dispatch the job with the given arguments.
      *
-     * @return \Illuminate\Foundation\Bus\PendingDispatch
+     * @return \Sellony\Foundation\Bus\PendingDispatch
      */
     public static function dispatch()
     {
@@ -22,7 +22,7 @@ trait Dispatchable
      *
      * @param  bool  $boolean
      * @param  mixed  ...$arguments
-     * @return \Illuminate\Foundation\Bus\PendingDispatch|\Illuminate\Support\Fluent
+     * @return \Sellony\Foundation\Bus\PendingDispatch|\Illuminate\Support\Fluent
      */
     public static function dispatchIf($boolean, ...$arguments)
     {
@@ -36,7 +36,7 @@ trait Dispatchable
      *
      * @param  bool  $boolean
      * @param  mixed  ...$arguments
-     * @return \Illuminate\Foundation\Bus\PendingDispatch|\Illuminate\Support\Fluent
+     * @return \Sellony\Foundation\Bus\PendingDispatch|\Illuminate\Support\Fluent
      */
     public static function dispatchUnless($boolean, ...$arguments)
     {
@@ -83,7 +83,7 @@ trait Dispatchable
      * Set the jobs that should run if this job is successful.
      *
      * @param  array  $chain
-     * @return \Illuminate\Foundation\Bus\PendingChain
+     * @return \Sellony\Foundation\Bus\PendingChain
      */
     public static function withChain($chain)
     {

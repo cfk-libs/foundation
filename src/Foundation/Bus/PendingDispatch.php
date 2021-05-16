@@ -1,6 +1,6 @@
 <?php
 
-namespace Illuminate\Foundation\Bus;
+namespace Sellony\Foundation\Bus;
 
 use Illuminate\Container\Container;
 use Illuminate\Contracts\Bus\Dispatcher;
