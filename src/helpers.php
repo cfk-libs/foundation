@@ -3,6 +3,17 @@
 use Illuminate\Container\Container;
 use Illuminate\Support\Env;
 
+if (!function_exists('cemre')) {
+    /**
+     * convert dd to cemre
+     * @param mixed $data
+    */
+    function cemre($data)
+    {
+        return dump($data);
+    }
+}
+
 if (! function_exists('app')) {
     /**
      * Get the available container instance.
@@ -147,5 +158,24 @@ if (! function_exists('config')) {
         }
 
         return app('config')->get($key, $default);
+    }
+}
+
+if (! function_exists('trans')) {
+    /**
+     * Translate the given message.
+     *
+     * @param  string|null  $key
+     * @param  array  $replace
+     * @param  string|null  $locale
+     * @return \Illuminate\Contracts\Translation\Translator|string|array|null
+     */
+    function trans($key = null, $replace = [], $locale = null)
+    {
+        if (is_null($key)) {
+            return app('translator');
+        }
+
+        return app('translator')->get($key, $replace, $locale);
     }
 }
