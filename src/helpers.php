@@ -137,19 +137,6 @@ if (! function_exists('database_path')) {
     }
 }
 
-if (!function_exists('dependency')) {
-    /**
-     * Finds an entry of the container by its identifier and returns it.
-     * @param $name
-     * @throws \Psr\Container\NotFoundExceptionInterface
-     * @throws \Psr\Container\ContainerExceptionInterface
-     */
-    function dependency($name)
-    {
-        return container()->make($name);
-    }
-}
-
 if (! function_exists('config')) {
     /**
      * Get / set the specified configuration value.
