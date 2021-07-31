@@ -137,6 +137,39 @@ if (! function_exists('database_path')) {
     }
 }
 
+if (! function_exists('cache')) {
+    /**
+     * Get / set the specified cache value.
+     *
+     * If an array is passed, we'll assume you want to put to the cache.
+     *
+     * @param  dynamic  key|key,default|data,expiration|null
+     * @return mixed|\Illuminate\Cache\CacheManager
+     *
+     * @throws \Exception
+     */
+    function cache()
+    {
+        $arguments = func_get_args();
+
+        if (empty($arguments)) {
+            return app('cache');
+        }
+
+        if (is_string($arguments[0])) {
+            return app('cache')->get(...$arguments);
+        }
+
+        if (! is_array($arguments[0])) {
+            throw new Exception(
+                'When setting a value in the cache, you must pass an array of key / value pairs.'
+            );
+        }
+
+        return app('cache')->put(key($arguments[0]), reset($arguments[0]), $arguments[1] ?? null);
+    }
+}
+
 if (! function_exists('config')) {
     /**
      * Get / set the specified configuration value.
@@ -161,6 +194,66 @@ if (! function_exists('config')) {
     }
 }
 
+if (! function_exists('config_path')) {
+    /**
+     * Get the configuration path.
+     *
+     * @param  string  $path
+     * @return string
+     */
+    function config_path($path = '')
+    {
+        return app()->configPath($path);
+    }
+}
+
+if (! function_exists('dispatch')) {
+    /**
+     * Dispatch a job to its appropriate handler.
+     *
+     * @param  mixed  $job
+     * @return \Illuminate\Foundation\Bus\PendingDispatch
+     */
+    function dispatch($job)
+    {
+        return $job instanceof Closure
+                ? new PendingClosureDispatch(CallQueuedClosure::create($job))
+                : new PendingDispatch($job);
+    }
+}
+
+if (! function_exists('dispatch_sync')) {
+    /**
+     * Dispatch a command to its appropriate handler in the current process.
+     *
+     * Queueable jobs will be dispatched to the "sync" queue.
+     *
+     * @param  mixed  $job
+     * @param  mixed  $handler
+     * @return mixed
+     */
+    function dispatch_sync($job, $handler = null)
+    {
+        return app(Dispatcher::class)->dispatchSync($job, $handler);
+    }
+}
+
+if (! function_exists('dispatch_now')) {
+    /**
+     * Dispatch a command to its appropriate handler in the current process.
+     *
+     * @param  mixed  $job
+     * @param  mixed  $handler
+     * @return mixed
+     *
+     * @deprecated Will be removed in a future Laravel version.
+     */
+    function dispatch_now($job, $handler = null)
+    {
+        return app(Dispatcher::class)->dispatchNow($job, $handler);
+    }
+}
+
 if (! function_exists('trans')) {
     /**
      * Translate the given message.
@@ -177,5 +270,65 @@ if (! function_exists('trans')) {
         }
 
         return app('translator')->get($key, $replace, $locale);
+    }
+}
+
+if (! function_exists('event')) {
+    /**
+     * Dispatch an event and call the listeners.
+     *
+     * @param  string|object  $event
+     * @param  mixed  $payload
+     * @param  bool  $halt
+     * @return array|null
+     */
+    function event(...$args)
+    {
+        return app('events')->dispatch(...$args);
+    }
+}
+
+if (! function_exists('info')) {
+    /**
+     * Write some information to the log.
+     *
+     * @param  string  $message
+     * @param  array  $context
+     * @return void
+     */
+    function info($message, $context = [])
+    {
+        app('log')->info($message, $context);
+    }
+}
+
+if (! function_exists('logger')) {
+    /**
+     * Log a debug message to the logs.
+     *
+     * @param  string|null  $message
+     * @param  array  $context
+     * @return \Illuminate\Log\LogManager|null
+     */
+    function logger($message = null, array $context = [])
+    {
+        if (is_null($message)) {
+            return app('log');
+        }
+
+        return app('log')->debug($message, $context);
+    }
+}
+
+if (! function_exists('logs')) {
+    /**
+     * Get a log driver instance.
+     *
+     * @param  string|null  $driver
+     * @return \Illuminate\Log\LogManager|\Psr\Log\LoggerInterface
+     */
+    function logs($driver = null)
+    {
+        return $driver ? app('log')->driver($driver) : app('log');
     }
 }
